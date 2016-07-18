@@ -19,7 +19,7 @@ public class BeersActivity extends AppCompatActivity {
     private String[] beers = new String[] {"beer1", "beer2",
             "beer3", "beer4"};
     @Bind (R.id.listView) ListView mListView;
-    @Bind(R.id.beerTextView) EditText mBeerTextView;
+    @Bind(R.id.beerTextView) TextView mBeerTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

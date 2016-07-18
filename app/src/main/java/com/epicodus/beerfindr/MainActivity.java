@@ -10,7 +10,7 @@ import android.widget.EditText;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.findBeersButton) Button mFindBeersButton;
     @Bind(R.id.beerEditText) EditText mBeerEditText;
 
@@ -21,14 +21,16 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-        mFindBeersButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String beer = mBeerEditText.getText().toString();
-                Intent intent = new Intent(MainActivity.this, BeersActivity.class);
-                intent.putExtra("beer", beer);
-                startActivity(intent);
-            }
-        });
+        mFindBeersButton.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == mFindBeersButton) {
+            String beer = mBeerEditText.getText().toString();
+            Intent intent = new Intent(MainActivity.this, BeersActivity.class);
+            intent.putExtra("beer", beer);
+            startActivity(intent);
+        }
     }
 }
