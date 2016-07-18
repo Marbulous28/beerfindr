@@ -17,11 +17,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-}
 
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.0.0'
-    compile 'com.jakewharton:butterknife:7.0.1'
+    buildTypes.each {
+        it.buildConfigField 'String', 'BREWERY_DB_KEY', BreweryDBKey
+    }
+
+    dependencies {
+        compile fileTree(dir: 'libs', include: ['*.jar'])
+        testCompile 'junit:junit:4.12'
+        compile 'com.android.support:appcompat-v7:24.0.0'
+        compile 'com.jakewharton:butterknife:7.0.1'
+        compile 'com.squareup.okhttp3:okhttp:3.2.0'
+    }
 }
