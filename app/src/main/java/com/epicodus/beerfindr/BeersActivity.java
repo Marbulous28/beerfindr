@@ -6,24 +6,27 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class BeersActivity extends AppCompatActivity {
     private String[] beers = new String[] {"beer1", "beer2",
             "beer3", "beer4"};
-    private TextView mBeerTextView;
-    private ListView mListView;
+    @Bind (R.id.listView) ListView mListView;
+    @Bind(R.id.beerTextView) EditText mBeerTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beers);
 
-        mBeerTextView = (TextView) findViewById(R.id.beerTextView);
-        mListView = (ListView) findViewById(R.id.listView);
-
+       ButterKnife.bind(this);
 
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, beers);
         mListView.setAdapter(adapter);
