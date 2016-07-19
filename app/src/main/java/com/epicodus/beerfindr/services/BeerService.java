@@ -29,7 +29,7 @@ public class BeerService {
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
 
-        String url = Constants.BASE_URL + Constants.RANDOM_BEER_PARAM +  Constants.KEY + Constants.BREWERY_DB_KEY;
+        String url = Constants.BASE_URL + Constants.RANDOM_BEER_PARAM +  Constants.KEY + Constants.BREWERY_DB_KEY + "&abv=6";
         Log.d(TAG, url);
 
         Request request = new Request.Builder()
@@ -48,12 +48,28 @@ public class BeerService {
             if (response.isSuccessful()) {
                 JSONObject returnJSON = new JSONObject(jsonData);
                 JSONObject dataJSON = returnJSON.getJSONObject("data");
-                    String name = dataJSON.getString("name");
-                    String description = dataJSON.getString("description");
-                    String IBU = dataJSON.getString("ibu");
-                    String ABV = dataJSON.getString("abv");
+                    String name = "no name";
+                    if (dataJSON.has("name") == true) {
+                        name = dataJSON.getString("name");
+                    }
+                    String description = "no description for this beer";
+                    if (dataJSON.has("description") == true) {
+                        description = dataJSON.getString("description");
+                    }
+                    String IBU = "No IBU information";
+                    if (dataJSON.has("ibu") == true) {
+                        IBU = dataJSON.getString("ibu");
+                    }
+                    String ABV = "No ABV information";
+                    if (dataJSON.has("abv") == true) {
+                        ABV = dataJSON.getString("abv");
+                    }
+                    String id = "no id";
+                    if (dataJSON.has("id") == true) {
+                        id = dataJSON.getString("id");
+                    }
 
-                    Beer beer = new Beer(name, description, IBU, ABV);
+                    Beer beer = new Beer(name, description, ABV, IBU, id);
                     beers.add(beer);
             }
 

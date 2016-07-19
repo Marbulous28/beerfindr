@@ -74,6 +74,7 @@ public class BeersActivity extends AppCompatActivity {
                             Log.d(TAG, "Description: " + beer.getDescription());
                             Log.d(TAG, "ABV: " + beer.getABV());
                             Log.d(TAG, "IBU: " + beer.getIBU());
+                            Log.d(TAG, "id: " + beer.getId());
                         }
                     }
                 });

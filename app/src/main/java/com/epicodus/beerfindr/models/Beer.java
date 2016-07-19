@@ -8,12 +8,14 @@ public class Beer {
     private String mDescription;
     private String mABV;
     private String mIBU;
+    private String mId;
 
-    public Beer (String name, String description, String ABV, String IBU) {
+    public Beer (String name, String description, String ABV, String IBU, String id) {
         this.mName = name;
         this.mDescription = description;
         this.mABV = ABV;
         this.mIBU = IBU;
+        this.mId = id;
     }
 
     public String getName(){
@@ -31,4 +33,6 @@ public class Beer {
     public String getIBU(){
         return mIBU;
     }
+
+    public String getId() { return mId; }
 }
