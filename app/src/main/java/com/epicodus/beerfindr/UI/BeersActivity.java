@@ -56,6 +56,7 @@ public class BeersActivity extends AppCompatActivity {
 
                 BeersActivity.this.runOnUiThread(new Runnable() {
 
+
                     @Override
                     public void run() {
 

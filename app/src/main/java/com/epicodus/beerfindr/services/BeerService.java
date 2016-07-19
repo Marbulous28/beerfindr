@@ -1,8 +1,11 @@
 package com.epicodus.beerfindr.services;
 
+import android.util.Log;
+
 import com.epicodus.beerfindr.Constants;
 import com.epicodus.beerfindr.models.Beer;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,13 +22,15 @@ import okhttp3.Response;
  * Created by Peter on 7/18/16.
  */
 public class BeerService {
+    public static final String TAG = BeerService.class.getSimpleName();
 
     public static void findBeers(Callback callback) {
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
 
-        String url = Constants.BASE_URL + Constants.RANDOM_BEER_PARAM + Constants.KEY + Constants.BREWERY_DB_KEY;
+        String url = Constants.BASE_URL + Constants.RANDOM_BEER_PARAM +  Constants.KEY + Constants.BREWERY_DB_KEY;
+        Log.d(TAG, url);
 
         Request request = new Request.Builder()
                 .url(url)
@@ -41,8 +46,8 @@ public class BeerService {
         try {
             String jsonData = response.body().string();
             if (response.isSuccessful()) {
-                JSONObject beerJSON = new JSONObject(jsonData);
-                JSONObject dataJSON = beerJSON.getJSONObject("data");
+                JSONObject returnJSON = new JSONObject(jsonData);
+                JSONObject dataJSON = returnJSON.getJSONObject("data");
                     String name = dataJSON.getString("name");
                     String description = dataJSON.getString("description");
                     String IBU = dataJSON.getString("ibu");
