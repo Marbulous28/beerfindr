@@ -29,7 +29,7 @@ public class BeerService {
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
 
-        String url = Constants.BASE_URL + Constants.RANDOM_BEER_PARAM +  Constants.KEY + Constants.BREWERY_DB_KEY + "&abv=6";
+        String url = Constants.BASE_URL + Constants.RANDOM_BEER_PARAM +  Constants.KEY + Constants.BREWERY_DB_KEY;
         Log.d(TAG, url);
 
         Request request = new Request.Builder()

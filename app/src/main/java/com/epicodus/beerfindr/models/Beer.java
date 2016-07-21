@@ -1,14 +1,20 @@
 package com.epicodus.beerfindr.models;
 
+import org.parceler.Parcel;
+
 /**
  * Created by Peter on 7/18/16.
  */
+
+@Parcel
 public class Beer {
     private String mName;
     private String mDescription;
     private String mABV;
     private String mIBU;
     private String mId;
+
+    public Beer() {}
 
     public Beer (String name, String description, String ABV, String IBU, String id) {
         this.mName = name;

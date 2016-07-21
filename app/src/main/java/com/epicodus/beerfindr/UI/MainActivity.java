@@ -1,4 +1,4 @@
-package com.epicodus.beerfindr.UI;
+package com.epicodus.beerfindr.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v == mFindBeersButton) {
             String beer = mBeerEditText.getText().toString();
-            Intent intent = new Intent(MainActivity.this, BeersActivity.class);
+            Intent intent = new Intent(MainActivity.this, BeerListActivity.class);
             intent.putExtra("beer", beer);
             startActivity(intent);
         }
