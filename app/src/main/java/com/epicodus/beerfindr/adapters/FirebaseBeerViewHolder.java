@@ -2,6 +2,7 @@ package com.epicodus.beerfindr.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
@@ -22,10 +23,7 @@ import java.util.ArrayList;
 /**
  * Created by Peter on 7/22/16.
  */
-public class FirebaseBeerViewHolder {
-
-    private static final int MAX_WIDTH = 200;
-    private static final int MAX_HEIGHT = 200;
+public class FirebaseBeerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     View mView;
     Context mContext;
@@ -39,12 +37,10 @@ public class FirebaseBeerViewHolder {
 
     public void bindBeer(Beer beer) {
         TextView beerNameTextView = (TextView) mView.findViewById(R.id.beerNameTextView);
-        TextView beerDescriptionTextView = (TextView) mView.findViewById(R.id.beerDescriptionTextView);
         TextView ibuTextView = (TextView) mView.findViewById(R.id.ibuTextView);
         TextView abvTextView = (TextView) mView.findViewById(R.id.abvTextView);
 
         beerNameTextView.setText(beer.getName());
-        beerDescriptionTextView.setText(beer.getDescription());
         ibuTextView.setText("IBU: " + beer.getIBU());
         abvTextView.setText("ABV: " + beer.getABV() +"%");
     }
@@ -65,7 +61,7 @@ public class FirebaseBeerViewHolder {
 
                 Intent intent = new Intent(mContext, BeerDetailActivity.class);
                 intent.putExtra("position", itemPosition + "");
-                intent.putExtra("restaurants", Parcels.wrap(beers));
+                intent.putExtra("beers", Parcels.wrap(beers));
 
                 mContext.startActivity(intent);
             }

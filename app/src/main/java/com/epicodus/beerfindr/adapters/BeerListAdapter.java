@@ -53,7 +53,6 @@ public class BeerListAdapter extends RecyclerView.Adapter<BeerListAdapter.BeerVi
     public class BeerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @Bind(R.id.beerImageView) ImageView mBeerImageView;
         @Bind(R.id.beerNameTextView) TextView mBeerNameTextView;
-        @Bind(R.id.beerTypeTextView) TextView mBeerTypeTextView;
         @Bind(R.id.ibuTextView) TextView mIBUTextView;
         @Bind(R.id.abvTextView) TextView mABVTextView;
 

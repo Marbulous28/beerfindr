@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
 
+    @Bind(R.id.savedBeersButton) Button mSavedBeersButton;
     @Bind(R.id.findBeersButton) Button mFindBeersButton;
     @Bind(R.id.beerEditText) EditText mBeerEditText;
 
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mEditor = mSharedPreferences.edit();
 
+        mSavedBeersButton.setOnClickListener(this);
         mFindBeersButton.setOnClickListener(this);
     }
 
@@ -42,6 +44,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             addToSharedPreferences(beer);
             Intent intent = new Intent(MainActivity.this, BeerListActivity.class);
             intent.putExtra("beer", beer);
+            startActivity(intent);
+        }
+        if (v == mSavedBeersButton) {
+            Intent intent = new Intent(MainActivity.this, SavedBeerListActivity.class);
             startActivity(intent);
         }
     }

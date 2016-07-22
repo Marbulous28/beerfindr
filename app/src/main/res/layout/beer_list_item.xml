@@ -26,15 +26,6 @@
             android:text="Beer Name"
             android:textColor="@color/colorPrimary"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Beer Type"
-            android:id="@+id/beerTypeTextView"
-            android:layout_below="@+id/beerNameTextView"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textStyle="italic"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
