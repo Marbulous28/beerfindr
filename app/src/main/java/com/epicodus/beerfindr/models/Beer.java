@@ -8,37 +8,37 @@ import org.parceler.Parcel;
 
 @Parcel
 public class Beer {
-    private String mName;
-    private String mDescription;
-    private String mABV;
-    private String mIBU;
-    private String mId;
+    private String Name;
+    private String Description;
+    private String ABV;
+    private String IBU;
+    private String Id;
 
     public Beer() {}
 
     public Beer (String name, String description, String ABV, String IBU, String id) {
-        this.mName = name;
-        this.mDescription = description;
-        this.mABV = ABV;
-        this.mIBU = IBU;
-        this.mId = id;
+        this.Name = name;
+        this.Description = description;
+        this.ABV = ABV;
+        this.IBU = IBU;
+        this.Id = id;
     }
 
     public String getName(){
-        return  mName;
+        return  Name;
     }
 
     public String getDescription(){
-        return mDescription;
+        return Description;
     }
 
     public String getABV(){
-        return mABV;
+        return ABV;
     }
 
     public String getIBU(){
-        return mIBU;
+        return IBU;
     }
 
-    public String getId() { return mId; }
+    public String getId() { return Id; }
 }
