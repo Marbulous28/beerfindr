@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Bind(R.id.savedBeersButton) Button mSavedBeersButton;
     @Bind(R.id.findBeersButton) Button mFindBeersButton;
-    @Bind(R.id.beerEditText) EditText mBeerEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,10 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v == mFindBeersButton) {
-            String beer = mBeerEditText.getText().toString();
-            addToSharedPreferences(beer);
             Intent intent = new Intent(MainActivity.this, BeerListActivity.class);
-            intent.putExtra("beer", beer);
             startActivity(intent);
         }
         if (v == mSavedBeersButton) {
