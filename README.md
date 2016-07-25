@@ -4,7 +4,7 @@
 
 ## Description:
 
-this app returns randon beers using the BreweryDB API. Users can create accounts, return details about a random beer, and store beers they like
+this app returns random beers using the BreweryDB API. Users can create accounts, return details about a random beer, and store beers they like
 in a favorites list.
 
 ## Set-Up:
