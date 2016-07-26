@@ -48,7 +48,6 @@ public class BeerDetailFragment extends Fragment implements View.OnClickListener
         mBeer = Parcels.unwrap(getArguments().getParcelable("beer"));
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_beer_detail, container, false);
