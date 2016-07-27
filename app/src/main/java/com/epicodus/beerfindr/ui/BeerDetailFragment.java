@@ -1,6 +1,8 @@
 package com.epicodus.beerfindr.ui;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -34,6 +36,7 @@ public class BeerDetailFragment extends Fragment implements View.OnClickListener
     @Bind(R.id.ibuTextView) TextView mIBULabel;
     @Bind(R.id.abvTextView) TextView mABVLabel;
     @Bind(R.id.saveBeerButton) Button mSaveBeerButton;
+    @Bind(R.id.websiteTextView) TextView mWebsiteLabel;
 
     private Beer mBeer;
 
@@ -62,6 +65,7 @@ public class BeerDetailFragment extends Fragment implements View.OnClickListener
         mIBULabel.setText("ibu: " + mBeer.getIBU());
 
         mSaveBeerButton.setOnClickListener(this);
+        mWebsiteLabel.setOnClickListener(this);
 
         return view;
     }
@@ -84,6 +88,12 @@ public class BeerDetailFragment extends Fragment implements View.OnClickListener
 
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
 
+        }
+
+        if (v == mWebsiteLabel) {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://www.beeradvocate.com/"));
+            startActivity(webIntent);
         }
     }
 
