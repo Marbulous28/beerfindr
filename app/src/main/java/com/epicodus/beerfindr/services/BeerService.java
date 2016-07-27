@@ -24,12 +24,12 @@ import okhttp3.Response;
 public class BeerService {
     public static final String TAG = BeerService.class.getSimpleName();
 
-    public static void findBeers(Callback callback) {
+    public static void findBeers(String abv, Callback callback) {
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
 
-        String url = Constants.BASE_URL + Constants.RANDOM_BEER_PARAM +  Constants.KEY + Constants.BREWERY_DB_KEY;
+        String url = Constants.BASE_URL + Constants.RANDOM_BEER_PARAM + Constants.ABV_KEY + abv +  Constants.KEY + Constants.BREWERY_DB_KEY;
         Log.d(TAG, url);
 
         Request request = new Request.Builder()
@@ -47,30 +47,33 @@ public class BeerService {
             String jsonData = response.body().string();
             if (response.isSuccessful()) {
                 JSONObject returnJSON = new JSONObject(jsonData);
-                JSONObject dataJSON = returnJSON.getJSONObject("data");
+                JSONArray dataJSON = returnJSON.getJSONArray("data");
+                for (int i = 0; i < dataJSON.length(); i++) {
+                    JSONObject beerJSON = dataJSON.getJSONObject(i);
                     String name = "no name";
-                    if (dataJSON.has("name") == true) {
-                        name = dataJSON.getString("name");
+                    if (beerJSON.has("name") == true) {
+                        name = beerJSON.getString("name");
                     }
                     String description = "no description for this beer";
-                    if (dataJSON.has("description") == true) {
-                        description = dataJSON.getString("description");
+                    if (beerJSON.has("description") == true) {
+                        description = beerJSON.getString("description");
                     }
                     String IBU = "No IBU information";
-                    if (dataJSON.has("ibu") == true) {
-                        IBU = dataJSON.getString("ibu");
+                    if (beerJSON.has("ibu") == true) {
+                        IBU = beerJSON.getString("ibu");
                     }
                     String ABV = "No ABV information";
-                    if (dataJSON.has("abv") == true) {
-                        ABV = dataJSON.getString("abv");
+                    if (beerJSON.has("abv") == true) {
+                        ABV = beerJSON.getString("abv");
                     }
                     String id = "no id";
-                    if (dataJSON.has("id") == true) {
-                        id = dataJSON.getString("id");
+                    if (beerJSON.has("id") == true) {
+                        id = beerJSON.getString("id");
                     }
 
                     Beer beer = new Beer(name, description, ABV, IBU, id);
                     beers.add(beer);
+                }
             }
 
         } catch (IOException e) {

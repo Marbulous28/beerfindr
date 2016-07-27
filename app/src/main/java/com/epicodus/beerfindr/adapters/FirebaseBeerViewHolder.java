@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.epicodus.beerfindr.Constants;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
  */
 public class FirebaseBeerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+    public ImageView mBeerImageView;
     View mView;
     Context mContext;
 
@@ -39,6 +41,7 @@ public class FirebaseBeerViewHolder extends RecyclerView.ViewHolder implements V
         TextView beerNameTextView = (TextView) mView.findViewById(R.id.beerNameTextView);
         TextView ibuTextView = (TextView) mView.findViewById(R.id.ibuTextView);
         TextView abvTextView = (TextView) mView.findViewById(R.id.abvTextView);
+        mBeerImageView = (ImageView) mView.findViewById(R.id.beerImageView);
 
         beerNameTextView.setText(beer.getName());
         ibuTextView.setText("IBU: " + beer.getIBU());

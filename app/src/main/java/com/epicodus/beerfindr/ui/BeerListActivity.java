@@ -35,14 +35,15 @@ public class BeerListActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
+        String abv = intent.getStringExtra("abv");
 
-        getBeers();
+        getBeers(abv);
     }
 
-    private void getBeers() {
+    private void getBeers(String abv) {
         final BeerService beerService = new BeerService();
 
-        beerService.findBeers(new Callback() {
+        beerService.findBeers(abv, new Callback() {
 
             @Override
             public void onFailure(Call call, IOException e) {

@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
+    @Bind(R.id.abvEditText) EditText mAbvEditText;
     @Bind(R.id.savedBeersButton) Button mSavedBeersButton;
     @Bind(R.id.findBeersButton) Button mFindBeersButton;
 
@@ -84,7 +85,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v == mFindBeersButton) {
+            String abv = mAbvEditText.getText().toString();
             Intent intent = new Intent(MainActivity.this, BeerListActivity.class);
+            intent.putExtra("abv", abv);
             startActivity(intent);
         }
         if (v == mSavedBeersButton) {

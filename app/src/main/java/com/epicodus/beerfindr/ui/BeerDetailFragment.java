@@ -7,12 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.epicodus.beerfindr.Constants;
 import com.epicodus.beerfindr.R;
 import com.epicodus.beerfindr.models.Beer;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -66,10 +69,19 @@ public class BeerDetailFragment extends Fragment implements View.OnClickListener
     @Override
     public void onClick(View v) {
         if (v == mSaveBeerButton) {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
+
             DatabaseReference beerRef = FirebaseDatabase
                     .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_BEERS);
-            beerRef.push().setValue(mBeer);
+                    .getReference(Constants.FIREBASE_CHILD_BEERS)
+                    .child(uid);
+
+            DatabaseReference pushRef = beerRef.push();
+            String pushId = pushRef.getKey();
+            mBeer.setPushId(pushId);
+            pushRef.setValue(mBeer);
+
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
 
         }

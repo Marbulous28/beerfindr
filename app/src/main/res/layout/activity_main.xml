@@ -25,6 +25,16 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/abvEditText"
+        android:layout_above="@+id/findBeersButton"
+        android:layout_marginBottom="10dp"
+        android:padding="5dp"
+        android:hint="Enter an ABV."
+        android:layout_centerHorizontal="true" />
+
     <Button
         android:layout_height="wrap_content"
         android:text="Find Beer"

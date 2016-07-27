@@ -6,8 +6,9 @@ package com.epicodus.beerfindr;
 public class Constants {
     public static final String BREWERY_DB_KEY = BuildConfig.BREWERY_DB_KEY;
     public static final String BASE_URL = "http://api.brewerydb.com/v2/";
-    public static final String RANDOM_BEER_PARAM = "beer/random";
-    public static final String KEY = "?key=";
+    public static final String RANDOM_BEER_PARAM = "beers";
+    public static final String KEY = "&key=";
     public static final String PREFERENCES_TEST_KEY = "test";
     public static final String FIREBASE_CHILD_BEERS = "beers";
+    public static final String ABV_KEY = "?abv=";
 }

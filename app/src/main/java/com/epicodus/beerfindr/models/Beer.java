@@ -13,6 +13,7 @@ public class Beer {
     private String abv;
     private String ibu;
     private String id;
+    private String pushId;
 
     public Beer() {}
 
@@ -41,4 +42,12 @@ public class Beer {
     }
 
     public String getId() { return id; }
+
+    public String getPushId(){
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
+    }
 }
