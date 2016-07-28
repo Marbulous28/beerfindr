@@ -21,6 +21,7 @@ public class BeerDetailActivity extends AppCompatActivity {
     private BeerPagerAdapter adapterViewPager;
     ArrayList<Beer> mBeers = new ArrayList<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +29,8 @@ public class BeerDetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mBeers = Parcels.unwrap(getIntent().getParcelableExtra("beers"));
-        int startingPosition = getIntent().getIntExtra("position",0);
+
+        int startingPosition = getIntent().getIntExtra("position", 0);
 
         adapterViewPager = new BeerPagerAdapter(getSupportFragmentManager(), mBeers);
         mViewPager.setAdapter(adapterViewPager);

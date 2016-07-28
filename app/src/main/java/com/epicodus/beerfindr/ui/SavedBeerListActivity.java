@@ -23,7 +23,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class SavedBeerListActivity extends AppCompatActivity implements OnStartDragListener {
-    private DatabaseReference mRestaurantReference;
+    private DatabaseReference mBeerReference;
     private FirebaseBeerListAdapter mFirebaseAdapter;
     private ItemTouchHelper mItemTouchHelper;
 
@@ -43,14 +43,14 @@ public class SavedBeerListActivity extends AppCompatActivity implements OnStartD
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
 
-        mRestaurantReference = FirebaseDatabase
+        mBeerReference = FirebaseDatabase
                 .getInstance()
                 .getReference(Constants.FIREBASE_CHILD_BEERS)
                 .child(uid);
 
         mFirebaseAdapter = new FirebaseBeerListAdapter(Beer.class,
                 R.layout.beer_list_item_draggable, FirebaseBeerViewHolder.class,
-                mRestaurantReference, this, this);
+                mBeerReference, this, this);
 
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));

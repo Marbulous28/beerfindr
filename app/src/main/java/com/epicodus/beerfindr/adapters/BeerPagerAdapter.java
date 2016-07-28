@@ -32,6 +32,7 @@ public class BeerPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
+
         return mBeers.get(position).getName();
     }
 }
